@@ -67,7 +67,7 @@ APP_DEBUG=true
 APP_URL=http://127.0.0.1:8000
 
 # External API (User Service)
-API_BASE_URL=http://127.0.0.1:9999/api
+API_BASE_URL=http://127.0.0.1:8080/api
 API_TIMEOUT=10           # seconds
 API_BEARER_TOKEN=        # optional; set if your API needs Authorization: Bearer <token>
 
