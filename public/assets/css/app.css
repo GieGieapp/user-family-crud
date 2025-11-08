@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+
+/* app.css — UI User CRUD (PicoCSS compatible) */
+
+/* ===== Base layout ===== */
+.container { max-width: 680px; margin: auto; }
+.section-title { font-weight: 700; letter-spacing: .3px; margin: .75rem 0; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; align-items: center; }
+.family-row { display: grid; grid-template-columns: 1fr 1fr 1fr 120px 90px; gap: .5rem; margin: .5rem 0; }
+
+.btn-danger { background: #e11d48; color: #fff; border: 0; }
+.add-link { font-size: .9rem; color: #0ea5e9; cursor: pointer; }
+.hr { height: 1px; background: #e5e7eb; margin: .75rem 0; }
+.small { font-size: .9rem; color: #6b7280; }
+
+/* ===== Table (bersih & stabil) ===== */
+.table-wrap { overflow-x: auto; }
+
+table[role="grid"]{
+    width: 100%;
+    border-collapse: separate;   /* supaya border-radius berfungsi */
+    border-spacing: 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+table[role="grid"] thead th{
+    text-align: left;
+    font-weight: 600;
+    padding: .6rem .75rem;
+    background: #f8fafc;
+    border-bottom: 1px solid #e5e7eb;
+}
+table[role="grid"] tbody td{
+    padding: .55rem .75rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #f1f5f9;
+}
+table[role="grid"] tbody tr:hover{ background: #f6faff; }
+
+/* kolom util */
+td.num { font-variant-numeric: tabular-nums; width: 72px; }
+td.email, td.phone { max-width: 220px; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ===== Aksi (show/delete) kecil & sejajar ===== */
+td.actions { width: 150px; }            /* jangan set display di sini */
+.action-bar {
+    display: flex; gap: .35rem; align-items: center; white-space: nowrap;
+}
+.action-bar form { display: flex; margin: 0; padding: 0; }
+
+.action-bar a.btn-sm,
+.action-bar button.btn-sm{
+    display: inline-flex; align-items: center; justify-content: center;
+    box-sizing: border-box;
+    height: 28px; padding: 0 .5rem; font-size: .85rem; line-height: 1; border-radius: 6px;
+}
+
+/* Show (outline ringan) */
+.action-bar a.btn-sm[role="button"]{
+    background: transparent; border: 1px solid #e5e7eb; color: #111; text-decoration: none;
+}
+.action-bar a.btn-sm[role="button"]:hover{ background: #f7f7f9; }
+
+/* Delete (merah kecil) */
+.btn-danger.btn-sm{ height: 28px; padding: 0 .5rem; font-size: .85rem; line-height: 1; }
+
+/* ===== Responsive ===== */
+@media (max-width: 560px){
+    .grid-2 { grid-template-columns: 1fr; }
+    .family-row { grid-template-columns: 1fr; }
+    td.email, td.phone { max-width: 140px; }
+    td.actions { width: auto; }
+}
+
+/* ===== Aksi (show/delete) kecil & sejajar — FINAL ===== */
+td.actions { width:150px; }
+
+.action-bar{
+    display:flex;
+    align-items:center;
+    gap:.4rem;
+    white-space:nowrap;
+}
+
+.action-bar form{
+    display:flex;
+    margin:0;
+    padding:0;
+}
+
+/* Samakan kotak tombol (anchor & button) */
+.action-bar a.btn-sm,
+.action-bar button.btn-sm{
+    appearance:none;
+    -webkit-appearance:none;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+
+    height:28px;
+    padding:0 .6rem;
+    font-size:.85rem;
+    line-height:1;
+
+    border-radius:6px;
+    border:1px solid transparent;   /* samakan box model dgn anchor yg ber-border */
+    margin:0;
+    min-width:auto;
+    vertical-align:middle;
+}
+
+/* Show → outline tipis */
+.action-bar a.btn-sm[role="button"]{
+    background:transparent;
+    border-color:#e5e7eb;
+    color:#111;
+    text-decoration:none;
+}
+.action-bar a.btn-sm[role="button"]:hover{ background:#f7f7f9; }
+
+/* Delete → merah, tetap 28px */
+.btn-danger{
+    background:#e11d48;
+    color:#fff;
+    border-color:#e11d48; /* penting: agar tinggi identik (ada border 1px juga) */
+}
+.btn-danger.btn-sm{
+    height:28px;
+    padding:0 .6rem;
+    font-size:.85rem;
+    line-height:1;
+}
